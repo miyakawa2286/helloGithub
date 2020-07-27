@@ -1,11 +1,16 @@
-version: '3'
+version: '2.3'
 services: 
     mytorch:
-        image: pytorch/pytorch:1.5-cuda10.1-cudnn7-devel
+        build: 
+            context: .
+            dockerfile: ./Dockerfile
+        image: mytorch:1.5-cuda10.1-cudnn7
         container_name: mytorch-container
+        runtime: nvidia
+        environment: 
+            - NVIDIA_VISIBLE_DEVICES=all
         ports: 
             - 8080:80
-        #environment:
         volumes: 
             - .:/workspace
         working_dir: /workspace
