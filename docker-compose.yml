@@ -1,0 +1,11 @@
+version: '3'
+services: 
+    mytorch:
+        image: pytorch/pytorch:1.5-cuda10.1-cudnn7-devel
+        container_name: mytorch-container
+        ports: 
+            - 8080:80
+        #environment:
+        volumes: 
+            - .:/workspace
+        working_dir: /workspace
